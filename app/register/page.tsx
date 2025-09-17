@@ -21,16 +21,14 @@ export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState("")
   const router = useRouter()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
-    setError("")
 
     if (formData.password !== formData.confirmPassword) {
-      setError("Passwords do not match")
+      console.error("Passwords do not match")
       setIsLoading(false)
       return
     }
@@ -51,10 +49,10 @@ export default function RegisterPage() {
       if (response.ok) {
         router.push("/login?message=Registration successful! Please login.")
       } else {
-        setError(data.error || "Registration failed")
+        console.error(data.error || "Registration failed")
       }
-    } catch (error) {
-      setError("Network error. Please try again.")
+    } catch {
+      console.error("Network error. Please try again.")
     } finally {
       setIsLoading(false)
     }
@@ -77,10 +75,6 @@ export default function RegisterPage() {
         </CardHeader>
         <CardContent className="p-6">
           <form onSubmit={handleSubmit} className="space-y-4">
-            {error && (
-              <div className="p-3 rounded-lg text-sm text-red-700 bg-red-50 border border-red-200">{error}</div>
-            )}
-
             <div className="space-y-2">
               <Label htmlFor="username" className="text-sm font-medium text-green-800">
                 Username

@@ -31,7 +31,7 @@ export default function TestimonialsSection() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance text-green-800">What Our Guests Say</h2>
           <div className="w-24 h-1 mx-auto mb-6 bg-gradient-to-r from-yellow-500 to-yellow-400" />
           <p className="text-lg max-w-2xl mx-auto text-pretty text-green-700">
-            Don't just take our word for it. Here's what our valued guests have to say about their Eurotel experience.
+            Dont just take our word for it. Heres what our valued guests have to say about their Eurotel experience.
           </p>
         </div>
 
@@ -51,7 +51,7 @@ export default function TestimonialsSection() {
                 <MapPin className="w-4 h-4 mr-2" />
                 {testimonial.location}
               </div>
-              <p className="text-sm italic leading-relaxed text-green-700">"{testimonial.comment}"</p>
+              <p className="text-sm italic leading-relaxed text-green-700">{testimonial.comment}</p>
             </div>
           ))}
         </div>

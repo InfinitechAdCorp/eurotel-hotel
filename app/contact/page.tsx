@@ -74,7 +74,7 @@ export default function ContactPage() {
           <div className="max-w-5xl px-4 space-y-8">
             <div className="space-y-6">
               <h1 className="text-6xl md:text-7xl font-black text-white leading-tight">
-                Let's{" "}
+                Let&apos;s{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-300">
                   Connect
                 </span>
@@ -113,7 +113,7 @@ export default function ContactPage() {
                 </span>
               </h2>
               <p className="text-lg text-green-600 leading-relaxed">
-                Whether you're planning a business trip, romantic getaway, or family vacation, our team is here to
+                Whether you&apos;re planning a business trip, romantic getaway, or family vacation, our team is here to
                 ensure every detail is perfect.
               </p>
             </div>
@@ -246,7 +246,7 @@ export default function ContactPage() {
                     <MessageCircle className="w-8 h-8 mr-3" />
                     Get in Touch
                   </h3>
-                  <p className="text-green-100 text-lg">Send us a message and we'll respond within 30 minutes</p>
+                  <p className="text-green-100 text-lg">Send us a message and we&apos;ll respond within 30 minutes</p>
                 </div>
               </div>
 

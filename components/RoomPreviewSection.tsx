@@ -6,140 +6,129 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { useRoom, type Room } from "@/contexts/room-context"
 import { useAuth } from "@/contexts/auth-context"
-import {
-  Wifi,
-  Coffee,
-  Tv,
-  Bath,
-  Bed,
-  Users,
-  Star,
-  CheckCircle,
-  ArrowRight,
-  Eye,
-} from "lucide-react"
+import { Wifi, Coffee, Tv, Bath, Bed, Users, Star, CheckCircle, ArrowRight, Eye } from "lucide-react"
 import Link from "next/link"
+
+// ✅ Move mockRooms OUTSIDE component so it's not treated as a dependency
+const mockRooms: Room[] = [
+  {
+    id: "1",
+    name: "Deluxe Single Room",
+    type: "single",
+    price: 150,
+    description: "Perfect for solo travelers, featuring a comfortable queen bed and modern amenities.",
+    amenities: ["Free WiFi", "Air Conditioning", "Mini Bar", "Room Service", "Flat Screen TV"],
+    image: "/deluxe-single-room.jpg",
+    available: true,
+    images: [],
+  },
+  {
+    id: "2",
+    name: "Superior Single Room",
+    type: "single",
+    price: 120,
+    description: "Cozy single room with all essential amenities for a comfortable stay.",
+    amenities: ["Free WiFi", "Air Conditioning", "Room Service", "Flat Screen TV"],
+    image: "/superior-single-room.jpg",
+    available: true,
+    images: [],
+  },
+  {
+    id: "3",
+    name: "Standard Double Room",
+    type: "double",
+    price: 200,
+    description: "Spacious double room perfect for couples with a king-size bed and city views.",
+    amenities: ["Free WiFi", "Air Conditioning", "Mini Bar", "Room Service", "Flat Screen TV", "City View"],
+    image: "/standard-double-room.jpg",
+    available: true,
+    images: [],
+  },
+  {
+    id: "4",
+    name: "Deluxe Double Room",
+    type: "double",
+    price: 250,
+    description: "Luxurious double room with premium amenities and stunning city panorama.",
+    amenities: [
+      "Free WiFi",
+      "Air Conditioning",
+      "Mini Bar",
+      "Room Service",
+      "Flat Screen TV",
+      "City View",
+      "Balcony",
+    ],
+    image: "/deluxe-double-room.jpg",
+    available: false,
+    images: [],
+  },
+  {
+    id: "5",
+    name: "Executive Suite",
+    type: "suite",
+    price: 400,
+    description: "Spacious suite with separate living area, perfect for business travelers and extended stays.",
+    amenities: [
+      "Free WiFi",
+      "Air Conditioning",
+      "Mini Bar",
+      "Room Service",
+      "Flat Screen TV",
+      "City View",
+      "Balcony",
+      "Work Desk",
+      "Sofa",
+    ],
+    image: "/executive-suite.jpg",
+    available: true,
+    images: [],
+  },
+  {
+    id: "6",
+    name: "Presidential Suite",
+    type: "suite",
+    price: 600,
+    description: "The ultimate luxury experience with premium amenities and personalized service.",
+    amenities: [
+      "Free WiFi",
+      "Air Conditioning",
+      "Mini Bar",
+      "Room Service",
+      "Flat Screen TV",
+      "City View",
+      "Balcony",
+      "Work Desk",
+      "Sofa",
+      "Jacuzzi",
+      "Butler Service",
+    ],
+    image: "/luxury-hotel-spa-and-wellness-center.jpg",
+    available: true,
+    images: [],
+  },
+]
 
 export default function RoomsPreviewSection() {
   const { rooms, setRooms } = useRoom()
   const { user } = useAuth()
   const [featuredRooms, setFeaturedRooms] = useState<Room[]>([])
 
-  // Mock room data - same as your original component
-  const mockRooms: Room[] = [
-    {
-      id: "1",
-      name: "Deluxe Single Room",
-      type: "single",
-      price: 150,
-      description: "Perfect for solo travelers, featuring a comfortable queen bed and modern amenities.",
-      amenities: ["Free WiFi", "Air Conditioning", "Mini Bar", "Room Service", "Flat Screen TV"],
-      image: "/deluxe-single-room.jpg",
-      available: true,
-      images: []
-    },
-    {
-      id: "2",
-      name: "Superior Single Room",
-      type: "single",
-      price: 120,
-      description: "Cozy single room with all essential amenities for a comfortable stay.",
-      amenities: ["Free WiFi", "Air Conditioning", "Room Service", "Flat Screen TV"],
-      image: "/superior-single-room.jpg",
-      available: true,
-      images: []
-    },
-    {
-      id: "3",
-      name: "Standard Double Room",
-      type: "double",
-      price: 200,
-      description: "Spacious double room perfect for couples with a king-size bed and city views.",
-      amenities: ["Free WiFi", "Air Conditioning", "Mini Bar", "Room Service", "Flat Screen TV", "City View"],
-      image: "/standard-double-room.jpg",
-      available: true,
-      images: []
-    },
-    {
-      id: "4",
-      name: "Deluxe Double Room",
-      type: "double",
-      price: 250,
-      description: "Luxurious double room with premium amenities and stunning city panorama.",
-      amenities: [
-        "Free WiFi",
-        "Air Conditioning",
-        "Mini Bar",
-        "Room Service",
-        "Flat Screen TV",
-        "City View",
-        "Balcony",
-      ],
-      image: "/deluxe-double-room.jpg",
-      available: false,
-      images: []
-    },
-    {
-      id: "5",
-      name: "Executive Suite",
-      type: "suite",
-      price: 400,
-      description: "Spacious suite with separate living area, perfect for business travelers and extended stays.",
-      amenities: [
-        "Free WiFi",
-        "Air Conditioning",
-        "Mini Bar",
-        "Room Service",
-        "Flat Screen TV",
-        "City View",
-        "Balcony",
-        "Work Desk",
-        "Sofa",
-      ],
-      image: "/executive-suite.jpg",
-      available: true,
-      images: []
-    },
-    {
-      id: "6",
-      name: "Presidential Suite",
-      type: "suite",
-      price: 600,
-      description: "The ultimate luxury experience with premium amenities and personalized service.",
-      amenities: [
-        "Free WiFi",
-        "Air Conditioning",
-        "Mini Bar",
-        "Room Service",
-        "Flat Screen TV",
-        "City View",
-        "Balcony",
-        "Work Desk",
-        "Sofa",
-        "Jacuzzi",
-        "Butler Service",
-      ],
-      image: "/luxury-hotel-spa-and-wellness-center.jpg",
-      available: true,
-      images: []
-    },
-  ]
-
   useEffect(() => {
     // Set rooms in context if not already set
     if (rooms.length === 0) {
       setRooms(mockRooms)
     }
-    
-    // Show only 3 featured rooms for home page (mix of different types)
+
+    // Show only 3 featured rooms (single, double, suite)
     const featured = [
-      mockRooms.find(room => room.type === "single" && room.available),
-      mockRooms.find(room => room.type === "double" && room.available),
-      mockRooms.find(room => room.type === "suite" && room.available),
+      mockRooms.find((room) => room.type === "single" && room.available),
+      mockRooms.find((room) => room.type === "double" && room.available),
+      mockRooms.find((room) => room.type === "suite" && room.available),
     ].filter(Boolean) as Room[]
-    
+
     setFeaturedRooms(featured)
-  }, [rooms.length, setRooms])
+  }, [rooms.length, setRooms]) // ✅ warning gone
 
   const getAmenityIcon = (amenity: string) => {
     switch (amenity.toLowerCase()) {
@@ -181,7 +170,8 @@ export default function RoomsPreviewSection() {
             Our <span className="text-yellow-600">Featured Rooms</span>
           </h2>
           <p className="text-lg text-green-600 max-w-2xl mx-auto">
-            Discover comfort and luxury in our carefully designed accommodations, each offering exceptional amenities and service.
+            Discover comfort and luxury in our carefully designed accommodations, each offering exceptional amenities
+            and service.
           </p>
         </div>
 
@@ -194,9 +184,7 @@ export default function RoomsPreviewSection() {
             >
               <div
                 className="h-48 bg-cover bg-center relative group-hover:scale-105 transition-transform duration-300"
-                style={{
-                  backgroundImage: `url('${room.image}')`,
-                }}
+                style={{ backgroundImage: `url('${room.image}')` }}
               >
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
                 <div className="absolute top-4 left-4">
@@ -223,9 +211,7 @@ export default function RoomsPreviewSection() {
                   {getRoomTypeIcon(room.type)}
                   <span className="ml-2">{room.name}</span>
                 </CardTitle>
-                <CardDescription className="text-green-600 line-clamp-2">
-                  {room.description}
-                </CardDescription>
+                <CardDescription className="text-green-600 line-clamp-2">{room.description}</CardDescription>
               </CardHeader>
 
               <CardContent className="flex-1 flex flex-col px-6 pb-6">
@@ -234,7 +220,10 @@ export default function RoomsPreviewSection() {
                     <h4 className="font-semibold text-sm mb-2 text-green-800">Top Amenities:</h4>
                     <div className="flex flex-wrap gap-1">
                       {room.amenities.slice(0, 4).map((amenity, index) => (
-                        <div key={index} className="flex items-center text-xs text-green-600 bg-green-50 px-2 py-1 rounded-full">
+                        <div
+                          key={index}
+                          className="flex items-center text-xs text-green-600 bg-green-50 px-2 py-1 rounded-full"
+                        >
                           {getAmenityIcon(amenity)}
                           <span className="ml-1">{amenity}</span>
                         </div>
@@ -287,16 +276,16 @@ export default function RoomsPreviewSection() {
             {/* Decorative elements */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
             <div className="absolute bottom-0 left-0 w-24 h-24 bg-yellow-400/20 rounded-full -ml-12 -mb-12"></div>
-            
+
             <div className="relative z-10">
               <h3 className="text-2xl md:text-3xl font-bold mb-4">
                 Discover All Our <span className="text-yellow-400">Amazing Rooms</span>
               </h3>
               <p className="text-green-100 mb-6 max-w-2xl mx-auto">
-                Explore our complete collection of rooms and suites. From budget-friendly options to luxury accommodations, 
-                find the perfect space for your stay with advanced filtering and detailed information.
+                Explore our complete collection of rooms and suites. From budget-friendly options to luxury
+                accommodations, find the perfect space for your stay with advanced filtering and detailed information.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Link href="/rooms">
                   <Button
@@ -308,14 +297,10 @@ export default function RoomsPreviewSection() {
                     <ArrowRight className="ml-3 w-5 h-5 group-hover/cta:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
-                
+
                 <div className="text-center sm:text-left">
-                  <div className="text-yellow-200 text-sm font-medium">
-                    {mockRooms.length} Total Rooms Available
-                  </div>
-                  <div className="text-green-100 text-xs">
-                    Advanced search & filtering options
-                  </div>
+                  <div className="text-yellow-200 text-sm font-medium">{mockRooms.length} Total Rooms Available</div>
+                  <div className="text-green-100 text-xs">Advanced search & filtering options</div>
                 </div>
               </div>
             </div>

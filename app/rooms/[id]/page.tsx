@@ -27,7 +27,6 @@ import {
   CreditCard,
   User,
   MapPin,
-  Car,
   Utensils,
   Shield,
   Heart,
@@ -42,7 +41,7 @@ import Image from "next/image"
 export default function RoomDetailPage() {
   const params = useParams()
   const router = useRouter()
-  const { rooms, setSelectedRoom } = useRoom()
+  const { setSelectedRoom } = useRoom()
   const { user } = useAuth()
   const [room, setRoom] = useState<Room | null>(null)
   const [isLoading, setIsLoading] = useState(true)
@@ -234,18 +233,7 @@ export default function RoomDetailPage() {
     }
   }
 
-  const getRoomTypeIcon = (type: string) => {
-    switch (type) {
-      case "single":
-        return <Bed className="w-5 h-5" />
-      case "double":
-        return <Users className="w-5 h-5" />
-      case "suite":
-        return <Star className="w-5 h-5" />
-      default:
-        return <Bed className="w-5 h-5" />
-    }
-  }
+  
 
   const calculateTotal = () => {
     if (!bookingData.checkIn || !bookingData.checkOut || !room) return 0
@@ -270,7 +258,7 @@ export default function RoomDetailPage() {
         setShowToast(false)
       }, 4000) // Hide toast after 4 seconds
       
-      // Don't update the state if it exceeds max guests
+   
       return
     } else {
       setGuestValidationError("")
@@ -345,7 +333,7 @@ export default function RoomDetailPage() {
         <Card className="text-center p-8">
           <CardContent>
             <h1 className="text-2xl font-bold mb-4">Room Not Found</h1>
-            <p className="text-muted-foreground mb-4">The room you're looking for doesn't exist.</p>
+            <p className="text-muted-foreground mb-4">The room you are looking for doesnt exist.</p>
             <Link href="/rooms">
               <Button>Back to Rooms</Button>
             </Link>
@@ -577,7 +565,7 @@ export default function RoomDetailPage() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-green-800 mb-1">Prime Makati Location</h4>
-                      <p className="text-sm text-green-600">Located in the heart of Makati's business district</p>
+                      <p className="text-sm text-green-600">Located in the heart of Makatis business district</p>
                     </div>
                   </div>
                   <div className="flex items-start">

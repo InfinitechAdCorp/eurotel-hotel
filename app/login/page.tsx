@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Alert, AlertDescription } from "@/components/ui/alert"
 import { useAuth } from "@/contexts/auth-context"
 import { CustomLoader } from "@/components/custom-loader"
 import { Eye, EyeOff, LogIn } from "lucide-react"
@@ -17,31 +16,29 @@ export default function LoginPage() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false)
-  const [error, setError] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { login, isLoading } = useAuth()
   const router = useRouter()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setError("")
     setIsSubmitting(true)
 
     // Basic validation
     if (!username.trim() || !password.trim()) {
-      setError("Please fill in all fields")
+      alert("Please fill in all fields")
       setIsSubmitting(false)
       return
     }
 
     if (username.length < 3) {
-      setError("Username must be at least 3 characters long")
+      alert("Username must be at least 3 characters long")
       setIsSubmitting(false)
       return
     }
 
     if (password.length < 6) {
-      setError("Password must be at least 6 characters long")
+      alert("Password must be at least 6 characters long")
       setIsSubmitting(false)
       return
     }
@@ -51,10 +48,10 @@ export default function LoginPage() {
       if (success) {
         router.push("/")
       } else {
-        setError("Invalid username or password")
+        alert("Invalid username or password")
       }
-    } catch (error) {
-      setError("An error occurred. Please try again.")
+    } catch {
+      alert("An error occurred. Please try again.")
     } finally {
       setIsSubmitting(false)
     }
@@ -65,8 +62,7 @@ export default function LoginPage() {
       <CustomLoader isLoading={isLoading || isSubmitting} />
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 via-yellow-50 to-green-100 px-4 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-green-800/5 via-transparent to-yellow-500/5"></div>
-      <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg width=60 height=60 viewBox=0 0 60 60 xmlns=http://www.w3.org/2000/svg%3E%3Cg fill=none fill-rule=evenodd%3E%3Cg fill=%23059669 fill-opacity=0.03%3E%3Ccircle cx=30 cy=30 r=4/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
-
+        <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg width=60 height=60 viewBox=0 0 60 60 xmlns=http://www.w3.org/2000/svg%3E%3Cg fill=none fillRule=evenodd%3E%3Cg fill=%23059669 fillOpacity=0.03%3E%3Ccircle cx=30 cy=30 r=4/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
 
         <Card className="w-full max-w-md relative z-10 border-green-200 shadow-2xl bg-white/95 backdrop-blur-sm">
           <CardHeader className="text-center bg-gradient-to-r from-green-800 to-green-700 text-white rounded-t-lg">
@@ -75,14 +71,10 @@ export default function LoginPage() {
           </CardHeader>
           <CardContent className="p-6">
             <form onSubmit={handleSubmit} className="space-y-4">
-              {error && (
-                <Alert variant="destructive" className="border-red-300 bg-red-50">
-                  <AlertDescription className="text-red-700">{error}</AlertDescription>
-                </Alert>
-              )}
-
               <div className="space-y-2">
-                <Label htmlFor="username" className="text-green-800 font-medium">Username</Label>
+                <Label htmlFor="username" className="text-green-800 font-medium">
+                  Username
+                </Label>
                 <Input
                   id="username"
                   type="text"
@@ -95,7 +87,9 @@ export default function LoginPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="password" className="text-green-800 font-medium">Password</Label>
+                <Label htmlFor="password" className="text-green-800 font-medium">
+                  Password
+                </Label>
                 <div className="relative">
                   <Input
                     id="password"
@@ -114,11 +108,7 @@ export default function LoginPage() {
                     onClick={() => setShowPassword(!showPassword)}
                     disabled={isSubmitting}
                   >
-                    {showPassword ? (
-                      <EyeOff className="h-4 w-4" />
-                    ) : (
-                      <Eye className="h-4 w-4" />
-                    )}
+                    {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                   </Button>
                 </div>
               </div>
@@ -144,7 +134,7 @@ export default function LoginPage() {
 
             <div className="mt-6 text-center">
               <p className="text-sm text-gray-600">
-                Don't have an account?{" "}
+                Don&apos;t have an account?{" "}
                 <Link href="/register" className="text-green-700 hover:text-green-800 hover:underline font-medium">
                   Sign up here
                 </Link>
@@ -154,8 +144,12 @@ export default function LoginPage() {
             <div className="mt-4 p-4 bg-gradient-to-r from-yellow-50 to-green-50 border border-yellow-200 rounded-lg">
               <p className="text-xs text-green-800 text-center mb-2 font-semibold">Demo Credentials:</p>
               <div className="text-xs text-center space-y-1 text-green-700">
-                <p><strong className="text-yellow-700">Username:</strong> demo</p>
-                <p><strong className="text-yellow-700">Password:</strong> password123</p>
+                <p>
+                  <strong className="text-yellow-700">Username:</strong> demo
+                </p>
+                <p>
+                  <strong className="text-yellow-700">Password:</strong> password123
+                </p>
               </div>
             </div>
           </CardContent>

@@ -55,7 +55,7 @@ export function CustomLoader({ isLoading, onLoadingComplete }: CustomLoaderProps
     } else {
       setShowLoader(false)
     }
-  }, [isLoading, onLoadingComplete])
+  }, [isLoading, onLoadingComplete, loadingMessages.length])
 
   if (!showLoader) return null
 

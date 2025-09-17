@@ -532,7 +532,8 @@ export default function RoomsComponent() {
                       {searchTerm && (
                         <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-100 to-green-200 text-green-800 border-2 border-green-300/50 rounded-full shadow-md hover:shadow-lg transition-all duration-200">
                           <Search className="w-4 h-4" />
-                          <span className="font-semibold">"{searchTerm}"</span>
+                          <span className="font-semibold">&quot;{searchTerm}&quot;</span>
+
                           <button
                             onClick={() => setSearchTerm("")}
                             className="ml-1 p-1 hover:bg-green-300 rounded-full text-green-700 transition-colors"
@@ -695,7 +696,7 @@ export default function RoomsComponent() {
             <CardContent className="p-6 text-center">
               <h3 className="text-xl font-bold mb-2">Ready to Book?</h3>
               <p className="mb-4 text-green-100">
-                You've selected the <strong className="text-yellow-400">{selectedRoom.name}</strong>. Proceed to
+                Youve selected the <strong className="text-yellow-400">{selectedRoom.name}</strong>. Proceed to
                 check-in/checkout to complete your booking.
               </p>
               <Link href="/checkin-checkout">

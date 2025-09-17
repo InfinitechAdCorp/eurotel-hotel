@@ -102,7 +102,7 @@ export default function AboutPage() {
           </h1>
           <p className="text-lg md:text-xl text-green-700 mb-8 text-pretty max-w-3xl mx-auto">
             Located at the corner of Don Chino Roces and Arnaiz Avenue in Makati City, Eurotel has been providing
-            quality accommodation and warm Filipino hospitality in the heart of the Philippines' premier business
+            quality accommodation and warm Filipino hospitality in the heart of the Philippines&apos; premier business
             district.
           </p>
           <div className="flex items-center justify-center text-green-700 text-lg">
@@ -136,13 +136,14 @@ export default function AboutPage() {
               <div className="space-y-4 text-green-700">
                 <p className="text-pretty">
                   Eurotel Makati has been serving guests at the strategic corner of Don Chino Roces and Arnaiz Avenue,
-                  providing comfortable accommodations in one of Metro Manila's most accessible business locations. Our
-                  83-room property offers a more intimate hotel experience compared to larger establishments.
+                  providing comfortable accommodations in one of Metro Manila&apos;s most accessible business locations.
+                  Our 83-room property offers a more intimate hotel experience compared to larger establishments.
                 </p>
                 <p className="text-pretty">
-                  As part of one of the Philippines' established hotel chains, we focus on delivering consistent quality
-                  and reliable service. Our location provides easy access to Makati's business district while
-                  maintaining competitive rates that make us a practical choice for both business and leisure travelers.
+                  As part of one of the Philippines&apos; established hotel chains, we focus on delivering consistent
+                  quality and reliable service. Our location provides easy access to Makati&apos;s business district
+                  while maintaining competitive rates that make us a practical choice for both business and leisure
+                  travelers.
                 </p>
                 <p className="text-pretty">
                   With amenities including free WiFi, on-site parking, a restaurant, and 24-hour room service, Eurotel
@@ -199,7 +200,7 @@ export default function AboutPage() {
             <h2 className="text-3xl md:text-4xl font-bold text-green-800 mb-4 text-balance">Our Journey in Makati</h2>
             <div className="w-24 h-1 mx-auto mb-6 bg-gradient-to-r from-yellow-500 to-yellow-400" />
             <p className="text-lg text-green-700 max-w-2xl mx-auto text-pretty">
-              Key milestones in our journey of serving guests in the heart of Metro Manila's business district.
+              Key milestones in our journey of serving guests in the heart of Metro Manila&apos;s business district.
             </p>
           </div>
 
@@ -225,7 +226,7 @@ export default function AboutPage() {
       <section className="py-16 bg-gradient-to-br from-yellow-50 to-yellow-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-green-800 mb-4 text-balance">Recognition & Awards</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-green-800 mb-4 text-balance">Recognition and Awards</h2>
             <div className="w-24 h-1 mx-auto mb-6 bg-gradient-to-r from-yellow-500 to-yellow-400" />
             <p className="text-lg text-green-700 max-w-2xl mx-auto text-pretty">
               Our dedication to hospitality excellence has been recognized by local and international organizations.
@@ -360,7 +361,7 @@ export default function AboutPage() {
             <h2 className="text-3xl md:text-4xl font-bold text-green-800 mb-4 text-balance">Prime Makati Location</h2>
             <div className="w-24 h-1 mx-auto mb-6 bg-gradient-to-r from-yellow-500 to-yellow-400" />
             <p className="text-lg text-green-700 max-w-2xl mx-auto text-pretty">
-              Strategically positioned in the heart of Metro Manila's premier business and shopping district.
+              Strategically positioned in the heart of Metro Manila&apos;s premier business and shopping district.
             </p>
           </div>
 
@@ -384,7 +385,7 @@ export default function AboutPage() {
                 <div className="w-12 h-12 bg-gradient-to-br from-yellow-100 to-yellow-200 border-2 border-yellow-300 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Star className="w-6 h-6 text-green-800" />
                 </div>
-                <CardTitle className="text-green-800">Shopping & Dining</CardTitle>
+                <CardTitle className="text-green-800">Shopping and Dining</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-green-700 text-sm">
@@ -417,7 +418,7 @@ export default function AboutPage() {
           <div className="w-24 h-1 mx-auto mb-6 bg-gradient-to-r from-yellow-500 to-yellow-400" />
           <p className="text-lg mb-8 text-pretty max-w-2xl mx-auto opacity-90">
             Discover why business and leisure travelers choose Eurotel Makati as their home away from home in the
-            Philippines' financial capital.
+            Philippines&apos; financial capital.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
